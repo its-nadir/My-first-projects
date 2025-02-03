@@ -12,3 +12,4 @@ for _ in range(length):
     password = password + character
 
 print(password)
+#d
