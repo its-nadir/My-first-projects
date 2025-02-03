@@ -9,7 +9,7 @@ people_int=int(people)
 tip_value=(bill_float*tip_int)/100
 bill_total=bill_float+tip_value
 bill_per_person=bill_total/people_int
-rounded_bill=round(bill_per_person ,2)
+rounded_bill=round(bill_per_person ,2) 
 
 print("Each person should pay: $" +str(rounded_bill))
 
