@@ -4,6 +4,12 @@ words = [
     "chair", "smile", "green", "piano", "table", "ocean",  
     "cloud", "dream", "music", "zebra", "river", "flame"  
 ]
+win_hangman = """
+       \\O/  🎉
+        |    
+       / \\  
+You Win!
+"""
 hangman_stages = [
     """
        ------
@@ -92,11 +98,12 @@ while not game_over:
             space+=("_ ")
     if guessed_letter not in chosen_word:
         tries+=1
+        print(f"You guessed {guessed_letter}, that's not the letter , you lost a life ")
     print(space)
     print(hangman_stages[tries])
     if "_" not in space:
         game_over=True
-        print("You win")
+        print(win_hangman)
     elif "_" in space and tries==6:
         game_over=True
         print("You lose")
