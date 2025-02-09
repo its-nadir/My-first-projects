@@ -1,38 +1,29 @@
-import art
+from art import logo
 
-def calculator():
-    def add(n1, n2): return n1 + n2
-    def subtract(n1, n2): return n1 - n2
-    def multiply(n1, n2): return n1 * n2
-    def divide(n1, n2): return n1 / n2 if n2 != 0 else "Error! Division by zero."
+def clear_screen():
+    print("\n"*20)
+def calculate(n1, n2, operator):
+    if operator == "+": return n1 + n2
+    if operator == "-": return n1 - n2
+    if operator == "*": return n1 * n2
+    if operator == "/": return n1 / n2 if n2 != 0 else "Error! Division by zero."
+    return "Invalid operator"
 
-    operations = {"+": add, "-": subtract, "*": multiply, "/": divide}
-
-    def clear_screen():
-       print("\n"*20)
+while True:
+    print(logo)
+    first_number = float(input("Enter first number: "))
 
     while True:
-        print(art.logo)
-        num1 = float(input("What is the first number?: "))
+        operator = input("Enter an operator (+, -, *, /): ")
+        second_number = float(input("Enter second number: "))
 
-        while True:
-            print("Available operations:", " ".join(operations.keys()))
-            operation_symbol = input("Pick an operation: ")
-            num2 = float(input("What is the next number?: "))
+        result = calculate(first_number, second_number, operator)
+        print(f"Result: {first_number} {operator} {second_number} = {result}")
 
-            if operation_symbol in operations:
-                result = operations[operation_symbol](num1, num2)
-                print(f"{num1} {operation_symbol} {num2} = {result}")
-            else:
-                print("Invalid operation. Try again.")
-                continue
-
-            choice = input(f"Type 'y' to continue with {result}, or 'n' to start a new calculation: ").lower()
-
-            if choice == "y":
-                num1 = result
-            else:
-                clear_screen()
-                break
-
-calculator()
+        if input("Type 'y' to continue, 'n' to restart: ").lower() == "n":
+            clear_screen()
+            break
+        first_number = result
+        clear_screen()
+        print(logo)
+        print(f"Current number: {first_number}")
