@@ -13,3 +13,5 @@ name1 = input("Enter the first name: ").upper()
 name2 = input("Enter the second name: ").upper()
 
 calculate_love_score(name1, name2)
+
+
